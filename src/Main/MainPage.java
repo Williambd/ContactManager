@@ -61,6 +61,7 @@ public class MainPage extends javax.swing.JFrame {
         SearchALabel = new javax.swing.JLabel();
         SearchA = new javax.swing.JTextField();
         ChangeInfo = new javax.swing.JButton();
+        ChangeConf = new javax.swing.JLabel();
         Add = new javax.swing.JPanel();
         AddTitle = new javax.swing.JLabel();
         AddFNLabel = new javax.swing.JLabel();
@@ -74,6 +75,7 @@ public class MainPage extends javax.swing.JFrame {
         AddE = new javax.swing.JTextField();
         AddALabel = new javax.swing.JLabel();
         AddA = new javax.swing.JTextField();
+        AddConfirm = new javax.swing.JLabel();
         Title = new javax.swing.JLabel();
         Subtitle = new javax.swing.JLabel();
 
@@ -107,6 +109,9 @@ public class MainPage extends javax.swing.JFrame {
                 ChangeInfoActionPerformed(evt);
             }
         });
+
+        ChangeConf.setFont(new java.awt.Font("Ubuntu", 2, 18)); // NOI18N
+        ChangeConf.setForeground(new java.awt.Color(1, 119, 84));
 
         javax.swing.GroupLayout SearchLayout = new javax.swing.GroupLayout(Search);
         Search.setLayout(SearchLayout);
@@ -143,7 +148,9 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(ChangeInfo)
-                .addGap(252, 252, 252))
+                .addGap(31, 31, 31)
+                .addComponent(ChangeConf, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
         SearchLayout.setVerticalGroup(
             SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,9 +181,11 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SearchALabel)
                     .addComponent(SearchA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(ChangeInfo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(SearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ChangeInfo)
+                    .addComponent(ChangeConf, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12))
         );
 
         jTabbedPane1.addTab("SearchContacts", Search);
@@ -207,6 +216,9 @@ public class MainPage extends javax.swing.JFrame {
 
         AddALabel.setText("Address:");
 
+        AddConfirm.setFont(new java.awt.Font("Ubuntu", 3, 18)); // NOI18N
+        AddConfirm.setForeground(new java.awt.Color(19, 127, 93));
+
         javax.swing.GroupLayout AddLayout = new javax.swing.GroupLayout(Add);
         Add.setLayout(AddLayout);
         AddLayout.setHorizontalGroup(
@@ -235,8 +247,11 @@ public class MainPage extends javax.swing.JFrame {
                                     .addComponent(AddA)))
                             .addGroup(AddLayout.createSequentialGroup()
                                 .addGap(64, 64, 64)
-                                .addComponent(AddContact)))))
-                .addContainerGap(101, Short.MAX_VALUE))
+                                .addComponent(AddContact))
+                            .addGroup(AddLayout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(AddConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         AddLayout.setVerticalGroup(
             AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,7 +278,9 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(AddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddALabel)
                     .addComponent(AddA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(AddConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AddContact)
                 .addContainerGap())
         );
@@ -320,7 +337,7 @@ int contactLine;
     private void AddContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddContactActionPerformed
         try {
             //finds file and sets up file reader
-            File f = new File("Contacts.txt");
+            File f = new File("resources/Contacts.txt");
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             
@@ -363,6 +380,7 @@ int contactLine;
             //closes writer
             fw.close();
             
+            AddConfirm.setText(Name+" has been added to contacts");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -378,7 +396,7 @@ int contactLine;
 
         try {
             //prepares files and reader
-            File f = new File("Contacts.txt");
+            File f = new File("resources/Contacts.txt");
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             
@@ -433,7 +451,7 @@ int contactLine;
         FileReader fr = null;
         try {
             //prepare file
-            File f = new File("Contacts.txt");
+            File f = new File("resources/Contacts.txt");
             
             //prepare reading
             fr = new FileReader(f);
@@ -487,6 +505,7 @@ int contactLine;
             
             //closes writer
             fw.close();
+            ChangeConf.setText("Change Confirmed");
             
             
         } catch (FileNotFoundException ex) {
@@ -537,6 +556,7 @@ int contactLine;
     private javax.swing.JLabel AddALabel;
     private javax.swing.JTextField AddCP;
     private javax.swing.JLabel AddCPLabel;
+    private javax.swing.JLabel AddConfirm;
     private javax.swing.JButton AddContact;
     private javax.swing.JTextField AddE;
     private javax.swing.JLabel AddELabel;
@@ -545,6 +565,7 @@ int contactLine;
     private javax.swing.JTextField AddHP;
     private javax.swing.JLabel AddHPLabel;
     private javax.swing.JLabel AddTitle;
+    private javax.swing.JLabel ChangeConf;
     private javax.swing.JButton ChangeInfo;
     private javax.swing.JPanel Search;
     private javax.swing.JTextField SearchA;
