@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -337,7 +338,10 @@ int contactLine;
     private void AddContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddContactActionPerformed
         try {
             //finds file and sets up file reader
-            File f = new File("resources/Contacts.txt");
+            String fileName = "Contacts.txt";
+            File jarFile = new File(MainPage.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            String inputFilePath = jarFile.getParent() + File.separator + fileName;
+            File f = new File(inputFilePath);
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             
@@ -385,6 +389,8 @@ int contactLine;
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AddContactActionPerformed
 
@@ -396,7 +402,10 @@ int contactLine;
 
         try {
             //prepares files and reader
-            File f = new File("resources/Contacts.txt");
+            String fileName = "Contacts.txt";
+            File jarFile = new File(MainPage.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            String inputFilePath = jarFile.getParent() + File.separator + fileName;
+            File f = new File(inputFilePath);
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             
@@ -444,6 +453,8 @@ int contactLine;
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SearchContactActionPerformed
 
@@ -451,7 +462,10 @@ int contactLine;
         FileReader fr = null;
         try {
             //prepare file
-            File f = new File("resources/Contacts.txt");
+            String fileName = "Contacts.txt";
+            File jarFile = new File(MainPage.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
+            String inputFilePath = jarFile.getParent() + File.separator + fileName;
+            File f = new File(inputFilePath);
             
             //prepare reading
             fr = new FileReader(f);
@@ -511,6 +525,8 @@ int contactLine;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_ChangeInfoActionPerformed
